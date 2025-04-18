@@ -1,0 +1,57 @@
+import { useState } from "react"; import Image from "next/image"; import Link from "next/link"; import { motion } from "framer-motion";
+
+const Home = () => { const [score, setScore] = useState(0); const [logoX, setLogoX] = useState(0); const [logoY, setLogoY] = useState(0);
+
+const moveLogo = () => { const x = Math.random() * 300; const y = Math.random() * 300; setLogoX(x); setLogoY(y); setScore(score + 1); };
+
+return ( <div className="min-h-screen bg-gradient-to-br from-green-100 to-white text-gray-900 p-4"> <header className="text-center py-10"> <motion.div animate={{ x: logoX, y: logoY }} transition={{ type: "spring", stiffness: 100 }} className="cursor-pointer inline-block shadow-2xl rounded-full" onClick={moveLogo} > <Image
+src="/flipforge-logo.png"
+alt="FlipForge Logo"
+width={150}
+height={150}
+className="rounded-full"
+/> </motion.div> <h1 className="text-5xl font-bold mt-6">Welcome to FlipForge</h1> <p className="text-lg mt-2">Automating your real estate wholesaling journey</p> <p className="text-sm mt-1 text-gray-500">Score: {score}</p> </header>
+
+<main className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="bg-copper text-white p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300"
+    >
+      <h2 className="text-xl font-bold">Free Plan</h2>
+      <p className="mt-2">Access basic tools to get started.</p>
+      <button className="mt-4 bg-orange-700 hover:bg-orange-800 text-white py-2 px-4 rounded shadow-md">
+        Subscribe
+      </button>
+    </motion.div>
+
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="bg-slate-800 text-white p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300"
+    >
+      <h2 className="text-xl font-bold">Pro Plan</h2>
+      <p className="mt-2">More features to scale your business.</p>
+      <button className="mt-4 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded shadow-md">
+        Subscribe
+      </button>
+    </motion.div>
+
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="bg-gradient-to-br from-slate-200 to-white text-gray-900 p-6 rounded-2xl shadow-xl cursor-pointer transform transition-all duration-300 border border-slate-400"
+    >
+      <h2 className="text-xl font-bold">Elite Plan</h2>
+      <p className="mt-2">All features and VIP support.</p>
+      <button className="mt-4 bg-white hover:bg-slate-100 text-gray-800 py-2 px-4 rounded shadow-md border border-gray-400">
+        Subscribe
+      </button>
+    </motion.div>
+  </main>
+
+  <footer className="text-center mt-16 text-sm text-gray-500">
+    &copy; 2025 FlipForge. All rights reserved.
+  </footer>
+</div>
+
+); };
+
+export default Home;
